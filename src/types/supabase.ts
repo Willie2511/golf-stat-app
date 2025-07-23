@@ -14,10 +14,91 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      round_stats: {
+        Row: {
+          fairways_hit: number
+          gir: number
+          id: string
+          inserted_at: string | null
+          putts: number
+          round_id: string | null
+          sand_saves: number
+          strokes_gained: number | null
+          up_and_downs: number
+        }
+        Insert: {
+          fairways_hit: number
+          gir: number
+          id?: string
+          inserted_at?: string | null
+          putts: number
+          round_id?: string | null
+          sand_saves: number
+          strokes_gained?: number | null
+          up_and_downs: number
+        }
+        Update: {
+          fairways_hit?: number
+          gir?: number
+          id?: string
+          inserted_at?: string | null
+          putts?: number
+          round_id?: string | null
+          sand_saves?: number
+          strokes_gained?: number | null
+          up_and_downs?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "round_stats_round_id_fkey"
+            columns: ["round_id"]
+            isOneToOne: false
+            referencedRelation: "rounds"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rounds: {
+        Row: {
+          course_name: string | null
+          date_played: string
+          id: string
+          inserted_at: string | null
+          tees: string | null
+          user_id: string
+        }
+        Insert: {
+          course_name?: string | null
+          date_played: string
+          id?: string
+          inserted_at?: string | null
+          tees?: string | null
+          user_id: string
+        }
+        Update: {
+          course_name?: string | null
+          date_played?: string
+          id?: string
+          inserted_at?: string | null
+          tees?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
-      [_ in never]: never
+      v_user_round_agg: {
+        Row: {
+          avg_fairways: number | null
+          avg_gir: number | null
+          avg_putts: number | null
+          avg_sand: number | null
+          avg_updown: number | null
+          rounds: number | null
+          user_id: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
