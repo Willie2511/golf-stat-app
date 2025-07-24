@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import GolfStatsDashboard from "@/components/GolfStatsDashboard";
+import LandingPage from "../components/LandingPage"
 
 export default function Page() {
-  return <GolfStatsDashboard />;
+  return <LandingPage />
 }
