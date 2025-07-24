@@ -14,6 +14,21 @@ export type Database = {
   }
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          full_name: string | null
+          user_id: string
+        }
+        Insert: {
+          full_name?: string | null
+          user_id: string
+        }
+        Update: {
+          full_name?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       round_stats: {
         Row: {
           fairways_hit: number
